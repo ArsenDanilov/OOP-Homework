@@ -1,4 +1,7 @@
 package org.example.HW1;
+
+import java.util.Objects;
+
 public class Good {
     private String name;
     private int price;
@@ -33,5 +36,18 @@ public class Good {
 
     public Double getRating() {
         return rating;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Good good = (Good) o;
+        return price == good.price && Objects.equals(name, good.name) && Objects.equals(rating, good.rating);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, price, rating);
     }
 }
